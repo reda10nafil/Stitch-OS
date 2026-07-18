@@ -13,6 +13,7 @@ pub fn init_db(app_data_dir: &Path) -> SqlResult<Connection> {
     // SQLite will automatically use the WAL file to recover the database.
     
     let conn = Connection::open(&db_path)?;
+    conn.execute_batch("PRAGMA journal_mode=WAL; PRAGMA busy_timeout=5000;")?;
     conn.execute_batch("PRAGMA foreign_keys = ON;")?;
     conn.execute_batch(DDL)?;
     Ok(conn)
