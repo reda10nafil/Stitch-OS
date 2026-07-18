@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Business Profile | Nexus ERP</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-surface": "#dfe3e8",
+                        "surface-container-low": "#181c20",
+                        "on-secondary": "#213145",
+                        "on-tertiary-fixed-variant": "#6b3b00",
+                        "tertiary-fixed-dim": "#ffb875",
+                        "surface-container-lowest": "#0a0f13",
+                        "outline": "#89929b",
+                        "on-primary": "#003351",
+                        "secondary-container": "#3a4a5f",
+                        "on-background": "#dfe3e8",
+                        "surface-tint": "#93ccff",
+                        "surface-container-highest": "#31353a",
+                        "primary": "#93ccff",
+                        "on-surface-variant": "#bfc7d2",
+                        "on-secondary-container": "#a9bad3",
+                        "on-primary-fixed": "#001d31",
+                        "surface-bright": "#353a3e",
+                        "surface": "#101418",
+                        "surface-dim": "#101418",
+                        "primary-fixed-dim": "#93ccff",
+                        "on-primary-container": "#002c47",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-tertiary": "#4b2800",
+                        "inverse-primary": "#006398",
+                        "surface-container": "#1c2024",
+                        "error-container": "#93000a",
+                        "tertiary": "#ffb875",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "error": "#ffb4ab",
+                        "background": "#101418",
+                        "on-tertiary-container": "#412200",
+                        "on-tertiary-fixed": "#2d1600",
+                        "primary-fixed": "#cce5ff",
+                        "primary-container": "#3198dc",
+                        "on-primary-fixed-variant": "#004b73",
+                        "tertiary-container": "#d07d1c",
+                        "surface-container-high": "#262a2f",
+                        "outline-variant": "#3f4850",
+                        "tertiary-fixed": "#ffdcc0",
+                        "surface-variant": "#31353a",
+                        "inverse-surface": "#dfe3e8",
+                        "inverse-on-surface": "#2d3135",
+                        "secondary-fixed": "#d3e4fe",
+                        "secondary": "#b7c8e1",
+                        "on-error": "#690005"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "md": "16px",
+                        "lg": "24px",
+                        "sm": "8px",
+                        "xs": "4px",
+                        "shell-sidebar": "240px",
+                        "shell-header": "56px",
+                        "base-unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-base": ["Inter"],
+                        "headline": ["Inter"],
+                        "label-xs": ["Inter"],
+                        "label-md": ["Inter"],
+                        "mono": ["ui-monospace"],
+                        "display": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "title": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-base": ["13.3px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "headline": ["18px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "label-xs": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500" }],
+                        "mono": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }],
+                        "title": ["14px", { "lineHeight": "20px", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #101418;
+            color: #dfe3e8;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .signature-canvas {
+            touch-action: none;
+            cursor: crosshair;
+        }
+        /* Custom Scrollbar for high-density content */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #101418;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #3f4850;
+            border-radius: 2px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #93ccff;
+        }
+    </style>
+</head>
+<body class="flex overflow-hidden">
+<!-- SideNavBar (Shared Component) -->
+<aside class="fixed left-0 top-0 h-full w-[64px] bg-surface-container-lowest border-r border-outline-variant flex flex-col items-center py-4 space-y-4 z-50">
+<div class="mb-6">
+<span class="material-symbols-outlined font-headline text-headline text-primary">hub</span>
+</div>
+<nav class="flex flex-col space-y-4 w-full px-2">
+<!-- CRM active for Profile/Business Details logic -->
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-on-surface-variant hover:bg-surface-container-high" title="Dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-on-surface-variant hover:bg-surface-container-high" title="Calendar">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-on-surface-variant hover:bg-surface-container-high" title="Inventory">
+<span class="material-symbols-outlined">inventory_2</span>
+</button>
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-primary border-l-2 border-primary bg-secondary-container/20 Active: scale-95 transition-transform" title="CRM">
+<span class="material-symbols-outlined">groups</span>
+</button>
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-on-surface-variant hover:bg-surface-container-high" title="Connectors">
+<span class="material-symbols-outlined">hub</span>
+</button>
+<button class="w-full h-10 flex items-center justify-center rounded transition-colors text-on-surface-variant hover:bg-surface-container-high" title="Billing">
+<span class="material-symbols-outlined">payments</span>
+</button>
+</nav>
+<div class="mt-auto flex flex-col space-y-4 pb-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden border border-outline-variant">
+<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5icu4auqMThUg8Q4LQl4qM9g2Tob3XjD23Wf2wVHQ5uJb3wFBswZ0ZA-_xTzjjIHaXEA3eyP5SyHffGrWJoaNnNT21bK4eIP-6WDwVx4Zt4XfFkajLP_6MSftQRd29JMdLkTPe3PINUOXaColSSW4M-KeoZJGFJ9RUAaX9QrkOt3PG4MpiCRXjFWkDtcmDwE5x4NJmszhrSfhcv0OZSZPFPw_AZEjADwY5QoTjo_naVtykLKwnJyKllZzyBc7N8xsO827koN7mUaj"/>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-[64px] flex flex-col h-screen overflow-hidden">
+<!-- TopNavBar (Shared Component) -->
+<header class="flex justify-between items-center px-md h-shell-header border-b border-outline-variant bg-surface shrink-0">
+<div class="flex items-center gap-md">
+<h1 class="font-headline text-headline font-bold text-on-surface">Nexus ERP</h1>
+<div class="h-4 w-[1px] bg-outline-variant mx-sm"></div>
+<h2 class="font-title text-title text-on-surface-variant">Business Profile</h2>
+</div>
+<div class="flex items-center gap-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="bg-surface-container-low border border-outline-variant rounded-lg pl-10 pr-4 py-1.5 text-body-sm focus:outline-none focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Search parameters..." type="text"/>
+</div>
+<div class="flex items-center gap-sm">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Dynamic Content Canvas -->
+<div class="flex-1 overflow-y-auto custom-scrollbar bg-background p-md lg:p-lg">
+<div class="max-w-7xl mx-auto space-y-md">
+<!-- Page Title -->
+<div class="flex items-end justify-between mb-md">
+<div>
+<p class="font-label-xs text-label-xs text-primary uppercase tracking-wider mb-1">Configuration</p>
+<h3 class="font-display text-display text-on-surface">Business &amp; Documentation</h3>
+</div>
+<div class="flex gap-sm">
+<button class="px-lg h-8 bg-surface-container-high text-on-surface text-label-md rounded border border-outline-variant hover:bg-surface-container-highest transition-colors">Discard</button>
+<button class="px-lg h-8 bg-primary text-on-primary text-label-md rounded font-bold hover:opacity-90 transition-opacity">Save Changes</button>
+</div>
+</div>
+<!-- Main Layout Grid -->
+<div class="grid grid-cols-12 gap-md items-start">
+<!-- Left Column: Settings Form -->
+<div class="col-span-12 lg:col-span-8 space-y-md">
+<!-- 1. Business Details -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-sm mb-md pb-sm border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary">corporate_fare</span>
+<h4 class="font-title text-title text-on-surface">Business Details</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Company Name</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all" type="text" value="Velocity Enterprise Solutions"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">VAT Number (Partita IVA)</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all" placeholder="IT 01234567890" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Owner Name &amp; Surname</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all" type="text" value="Adrian Sterling"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Phone Number</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all" type="tel" value="+39 02 8456 789"/>
+</div>
+<div class="space-y-xs md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant">Registered Office Address</label>
+<textarea class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all resize-none" rows="2">Via Montenapoleone 2, 20121 Milano (MI), Italy</textarea>
+</div>
+</div>
+</section>
+<!-- 2. Financial Data -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-sm mb-md pb-sm border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+<h4 class="font-title text-title text-on-surface">Financial Data</h4>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">IBAN</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all uppercase" placeholder="IT00 X 0000 00000 000000000000" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Swift / BIC Code</label>
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded p-sm text-body-base focus:border-primary focus:ring-0 transition-all uppercase" placeholder="BANCITMM" type="text"/>
+</div>
+</div>
+</section>
+<!-- 3. Digital Signature Module -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<div class="flex items-center justify-between mb-md pb-sm border-b border-outline-variant">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary">draw</span>
+<h4 class="font-title text-title text-on-surface">Digital Signature Module</h4>
+</div>
+<button class="text-label-xs text-error hover:underline transition-all" id="clear-signature">Clear Canvas</button>
+</div>
+<div class="relative w-full h-48 bg-surface-container-lowest border border-dashed border-outline-variant rounded-lg overflow-hidden group">
+<canvas class="signature-canvas w-full h-full absolute inset-0 z-10" id="signature-canvas"></canvas>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none text-on-surface-variant/40 transition-opacity duration-300 z-0" id="signature-placeholder">
+<span class="material-symbols-outlined text-[48px]">gesture</span>
+<p class="font-label-md mt-2">Sign here using your touchpad or mouse</p>
+</div>
+<div class="absolute bottom-2 right-2 flex items-center gap-xs px-2 py-1 bg-surface-container-high rounded border border-outline-variant opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+<div class="w-2 h-2 rounded-full bg-primary animate-pulse"></div>
+<span class="text-[10px] text-on-surface-variant font-mono">ENCRYPTED SESSION</span>
+</div>
+</div>
+</section>
+</div>
+<!-- Right Column: Brand & Preview -->
+<div class="col-span-12 lg:col-span-4 space-y-md">
+<!-- Brand Assets -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-sm mb-md pb-sm border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary">palette</span>
+<h4 class="font-title text-title text-on-surface">Brand Assets</h4>
+</div>
+<div class="space-y-md">
+<div class="space-y-xs">
+<label class="font-label-md text-label-md text-on-surface-variant">Company Logo</label>
+<div class="relative flex flex-col items-center justify-center w-full h-32 bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded-lg hover:border-primary transition-colors cursor-pointer group">
+<input class="absolute inset-0 opacity-0 cursor-pointer" type="file"/>
+<div class="text-center group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary text-[32px]">upload_file</span>
+<p class="font-label-md text-on-surface-variant mt-sm">Drop logo here or <span class="text-primary underline">browse</span></p>
+<p class="text-[10px] text-on-surface-variant/60 mt-xs">PNG, SVG, or JPG (max. 2MB)</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Document Preview -->
+<section class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+<div class="flex items-center gap-sm mb-md pb-sm border-b border-outline-variant">
+<span class="material-symbols-outlined text-primary">description</span>
+<h4 class="font-title text-title text-on-surface">Header Preview</h4>
+</div>
+<div class="aspect-[4/3] bg-white rounded-sm p-4 shadow-inner overflow-hidden flex flex-col">
+<div class="flex justify-between items-start mb-4 border-b pb-2 border-slate-100">
+<div class="w-12 h-12 bg-slate-100 rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-400 text-sm">image</span>
+</div>
+<div class="text-right">
+<h5 class="text-[10px] font-bold text-slate-900 uppercase leading-none">INVOICE</h5>
+<p class="text-[8px] text-slate-500 mt-1">#INV-2023-001</p>
+</div>
+</div>
+<div class="space-y-2">
+<div>
+<p class="text-[9px] font-bold text-slate-800" id="preview-company">Velocity Enterprise Solutions</p>
+<p class="text-[7px] text-slate-500" id="preview-address">Via Montenapoleone 2, Milano</p>
+<p class="text-[7px] text-slate-500" id="preview-vat">P.IVA: IT 01234567890</p>
+</div>
+<div class="pt-2 border-t border-slate-100">
+<p class="text-[7px] text-slate-400 uppercase tracking-tighter">Bank Details</p>
+<p class="text-[7px] text-slate-600">IBAN: IT00 X 0000 ...</p>
+</div>
+</div>
+<div class="mt-auto flex justify-end">
+<div class="w-20 h-8 border border-slate-100 rounded bg-slate-50/50 flex items-center justify-center relative overflow-hidden">
+<span class="text-[6px] text-slate-300 italic" id="preview-signature-hint">Signature Placeholder</span>
+<img class="hidden absolute inset-0 w-full h-full object-contain pointer-events-none" id="preview-signature-img"/>
+</div>
+</div>
+</div>
+<p class="text-[11px] text-on-surface-variant italic mt-md">This preview updates in real-time as you modify your business details above.</p>
+</section>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer (Shared Component) -->
+<footer class="h-6 fixed bottom-0 right-0 w-[calc(100%-64px)] bg-surface-container-low border-t border-outline-variant flex justify-between items-center px-md text-on-surface-variant font-label-xs text-label-xs z-50">
+<div class="flex gap-md items-center">
+<span>System Status: <span class="text-green-500">Operational</span></span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>AI Latency: 24ms</span>
+<span class="w-1 h-1 bg-outline-variant rounded-full"></span>
+<span>Queue: 0</span>
+</div>
+<div class="flex gap-md">
+<a class="hover:text-on-surface transition-colors" href="#">Logs</a>
+<a class="hover:text-on-surface transition-colors" href="#">Support</a>
+<a class="hover:text-on-surface transition-colors" href="#">Privacy</a>
+</div>
+</footer>
+</main>
+<script>
+    // Signature Logic
+    const canvas = document.getElementById('signature-canvas');
+    const clearBtn = document.getElementById('clear-signature');
+    const placeholder = document.getElementById('signature-placeholder');
+    const previewSig = document.getElementById('preview-signature-img');
+    const previewHint = document.getElementById('preview-signature-hint');
+    const ctx = canvas.getContext('2d');
+    
+    let drawing = false;
+    let hasSigned = false;
+
+    function resizeCanvas() {
+        const rect = canvas.parentElement.getBoundingClientRect();
+        // Store current drawing before resizing
+        const tempCanvas = document.createElement('canvas');
+        const tempCtx = tempCanvas.getContext('2d');
+        tempCanvas.width = canvas.width;
+        tempCanvas.height = canvas.height;
+        tempCtx.drawImage(canvas, 0, 0);
+
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        // Restore settings
+        ctx.strokeStyle = '#0284c7'; // Primary brand blue
+        ctx.lineWidth = 2.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        // Redraw if there was a signature
+        if (hasSigned) {
+            ctx.drawImage(tempCanvas, 0, 0, tempCanvas.width, tempCanvas.height, 0, 0, canvas.width, canvas.height);
+        }
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    function getPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        return {
+            x: clientX - rect.left,
+            y: clientY - rect.top
+        };
+    }
+
+    function startPosition(e) {
+        drawing = true;
+        hasSigned = true;
+        placeholder.classList.add('opacity-0');
+        const pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+        draw(e);
+    }
+
+    function endPosition() {
+        if (!drawing) return;
+        drawing = false;
+        ctx.stroke(); // Finish current stroke
+        updatePreview();
+    }
+
+    function draw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        const pos = getPos(e);
+        
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+        // No beginPath here for continuous lines, unless we want segments.
+        // Keeping it fluid for signature.
+    }
+
+    function updatePreview() {
+        const dataUrl = canvas.toDataURL();
+        previewSig.src = dataUrl;
+        previewSig.classList.remove('hidden');
+        previewHint.classList.add('hidden');
+    }
+
+    canvas.addEventListener('mousedown', startPosition);
+    canvas.addEventListener('touchstart', startPosition, { passive: false });
+    window.addEventListener('mouseup', endPosition);
+    window.addEventListener('touchend', endPosition);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('touchmove', draw, { passive: false });
+
+    clearBtn.addEventListener('click', () => {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        placeholder.classList.remove('opacity-0');
+        previewSig.classList.add('hidden');
+        previewHint.classList.remove('hidden');
+        hasSigned = false;
+    });
+
+    // Real-time Preview updates for text fields
+    const companyInput = document.querySelector('input[value="Velocity Enterprise Solutions"]');
+    const addressInput = document.querySelector('textarea');
+    const vatInput = document.querySelector('input[placeholder="IT 01234567890"]');
+
+    if (companyInput) companyInput.addEventListener('input', (e) => document.getElementById('preview-company').textContent = e.target.value);
+    if (addressInput) addressInput.addEventListener('input', (e) => document.getElementById('preview-address').textContent = e.target.value.substring(0, 30) + '...');
+    if (vatInput) vatInput.addEventListener('input', (e) => document.getElementById('preview-vat').textContent = 'P.IVA: ' + e.target.value);
+
+</script>
+</body></html>

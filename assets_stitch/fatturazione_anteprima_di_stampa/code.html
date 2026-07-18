@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus ERP - Billing</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#0b1c30",
+                    "inverse-surface": "#dfe3e8",
+                    "on-secondary": "#213145",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-bright": "#353a3e",
+                    "surface-container": "#1c2024",
+                    "on-secondary-container": "#a9bad3",
+                    "on-primary-fixed-variant": "#004b73",
+                    "background": "#101418",
+                    "surface-dim": "#101418",
+                    "error": "#ffb4ab",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-primary-fixed": "#001d31",
+                    "error-container": "#93000a",
+                    "surface-variant": "#31353a",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#dfe3e8",
+                    "on-surface-variant": "#bfc7d2",
+                    "surface-container-lowest": "#0a0f13",
+                    "inverse-on-surface": "#2d3135",
+                    "surface-tint": "#93ccff",
+                    "primary-container": "#3198dc",
+                    "outline-variant": "#3f4850",
+                    "surface": "#101418",
+                    "on-tertiary": "#4b2800",
+                    "on-tertiary-fixed": "#2d1600",
+                    "inverse-primary": "#006398",
+                    "tertiary": "#ffb875",
+                    "secondary": "#b7c8e1",
+                    "primary-fixed-dim": "#93ccff",
+                    "surface-container-low": "#181c20",
+                    "tertiary-fixed": "#ffdcc0",
+                    "tertiary-container": "#d07d1c",
+                    "on-background": "#dfe3e8",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "tertiary-fixed-dim": "#ffb875",
+                    "secondary-container": "#3a4a5f",
+                    "on-primary": "#003351",
+                    "on-error": "#690005",
+                    "primary": "#93ccff",
+                    "on-tertiary-container": "#412200",
+                    "surface-container-highest": "#31353a",
+                    "primary-fixed": "#cce5ff",
+                    "outline": "#89929b",
+                    "on-primary-container": "#002c47",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-container-high": "#262a2f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "shell-sidebar": "64px",
+                    "base-unit": "4px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "shell-header": "56px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "mono": ["ui-monospace"],
+                    "body-sm": ["Inter"],
+                    "title": ["Inter"],
+                    "display": ["Inter"],
+                    "body-base": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-xs": ["Inter"]
+            },
+            "fontSize": {
+                    "headline": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "title": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "display": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-base": ["13.3px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-xs": ["11px", {"lineHeight": "14px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { overflow: hidden; background-color: #101418; color: #dfe3e8; }
+        .print-paper {
+            background: white;
+            color: black;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+            aspect-ratio: 1 / 1.414;
+            max-height: 80vh;
+        }
+        /* Custom Scrollbar for dense data areas */
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #181c20; }
+        ::-webkit-scrollbar-thumb { background: #3f4850; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #89929b; }
+    </style>
+</head>
+<body class="flex h-screen bg-background text-on-background font-body-base">
+<!-- SideNavBar (Shared Component) -->
+<nav class="fixed left-0 top-0 h-full w-[64px] bg-surface-container-lowest dark:bg-surface-container-lowest border-r border-outline-variant flex flex-col items-center py-4 space-y-4 z-50">
+<!-- Logo -->
+<div class="mb-4">
+<span class="material-symbols-outlined text-primary font-headline text-headline" style="font-variation-settings: 'FILL' 1;">dataset</span>
+</div>
+<!-- Tabs -->
+<div class="flex flex-col w-full space-y-2">
+<button class="w-full py-3 flex justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Dashboard">
+<span class="material-symbols-outlined">dashboard</span>
+</button>
+<button class="w-full py-3 flex justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Calendar">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="w-full py-3 flex justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Inventory">
+<span class="material-symbols-outlined">inventory_2</span>
+</button>
+<button class="w-full py-3 flex justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="CRM">
+<span class="material-symbols-outlined">groups</span>
+</button>
+<button class="w-full py-3 flex justify-center text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Connectors">
+<span class="material-symbols-outlined">hub</span>
+</button>
+<button class="w-full py-3 flex justify-center text-primary border-l-2 border-primary bg-secondary-container/20 scale-95 transition-transform" title="Billing">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">payments</span>
+</button>
+</div>
+<div class="mt-auto pt-4">
+<img alt="User Profile" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnSu2HFFGcc_8fYMy-ihpvze4DtGlNYO44M-sIYKUQ7j0FGy8g8fgtt1j0rjEHzAdbXM6RGgnzwOL-bJnR8VJUa9IS0UrwKx0dgicszetH-lRWjSqHz34A6KpPBsvbi6WrZPVlryJPLrWDDRshN3EUvTCGtBEn29EOapioAkS-IM9Fm0vMQIqcEDfbko__mqBpFIqi-q0Jgwkfh7IH4jM_1miY6-Pq1_67yqyhhMICWTxkv70pCa57dY_kJoRGWPWLPF-HVHNjjnwy"/>
+</div>
+</nav>
+<!-- TopNavBar (Shared Component) -->
+<header class="fixed top-0 right-0 w-[calc(100%-64px)] h-shell-header bg-surface dark:bg-surface border-b border-outline-variant flex justify-between items-center px-md ml-[64px] z-40">
+<div class="flex items-center gap-4">
+<h1 class="font-headline text-headline font-bold text-on-surface">Nexus ERP</h1>
+<span class="text-on-surface-variant font-body-sm px-2 py-1 bg-surface-container-low rounded border border-outline-variant">INV-2024-8932</span>
+</div>
+<div class="flex items-center gap-4">
+<!-- Search -->
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-2 top-1.5 text-on-surface-variant" style="font-size: 18px;">search</span>
+<input class="bg-surface-container h-[32px] pl-8 pr-4 border border-outline-variant rounded text-body-sm focus:ring-1 focus:ring-primary focus:border-primary w-64" placeholder="Search..." type="text"/>
+</div>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[64px] mt-[56px] w-[calc(100%-64px)] h-[calc(100vh-56px-24px)] flex">
+<!-- Left Pane: Data Editor -->
+<section class="w-1/2 h-full flex flex-col border-r border-outline-variant bg-surface-container-lowest overflow-y-auto">
+<!-- Editor Header Toolbar -->
+<div class="p-md border-b border-outline-variant flex justify-between items-center bg-surface-container-low sticky top-0 z-10">
+<h2 class="font-title text-title text-on-surface">Invoice Editor</h2>
+<div class="flex gap-2">
+<button class="h-[32px] px-3 border border-outline-variant rounded bg-surface hover:bg-surface-variant text-on-surface text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">save</span> Save Draft
+                    </button>
+</div>
+</div>
+<div class="p-lg space-y-6">
+<!-- Client Details Section -->
+<div class="space-y-4">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Client Information</h3>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1">
+<label class="font-label-xs text-label-xs text-on-surface-variant">Client Name</label>
+<input class="w-full bg-surface-dim border border-outline-variant rounded p-2 text-body-base focus:ring-1 focus:ring-primary focus:border-primary" type="text" value="Acme Corp Logistics"/>
+</div>
+<div class="space-y-1">
+<label class="font-label-xs text-label-xs text-on-surface-variant">Tax ID</label>
+<input class="w-full bg-surface-dim border border-outline-variant rounded p-2 text-body-base focus:ring-1 focus:ring-primary focus:border-primary" type="text" value="VAT-992-881X"/>
+</div>
+<div class="space-y-1 col-span-2">
+<label class="font-label-xs text-label-xs text-on-surface-variant">Billing Address</label>
+<textarea class="w-full bg-surface-dim border border-outline-variant rounded p-2 text-body-base focus:ring-1 focus:ring-primary focus:border-primary" rows="2">124 Industrial Pkwy, Suite 400
+Neo-Seattle, WA 98101</textarea>
+</div>
+</div>
+</div>
+<!-- Line Items Section -->
+<div class="space-y-4 border-t border-outline-variant pt-6">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-label-md text-on-surface-variant uppercase tracking-wider">Line Items</h3>
+<button class="text-primary text-body-sm hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">add</span> Add Row
+                        </button>
+</div>
+<div class="border border-outline-variant rounded bg-surface-container overflow-hidden">
+<table class="w-full text-left">
+<thead class="bg-surface-variant border-b border-outline-variant font-label-xs text-label-xs text-on-surface-variant">
+<tr>
+<th class="p-2">Description</th>
+<th class="p-2 w-20">Qty</th>
+<th class="p-2 w-24">Unit Price</th>
+<th class="p-2 w-20">VAT %</th>
+<th class="p-2 w-24 text-right">Total</th>
+<th class="p-2 w-8"></th>
+</tr>
+</thead>
+<tbody class="font-body-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-container-high">
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 focus:bg-surface-dim" type="text" value="Enterprise Server Rack (42U)"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-center focus:bg-surface-dim" type="number" value="2"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-right focus:bg-surface-dim" type="text" value="1,250.00"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-center focus:bg-surface-dim" type="number" value="20"/></td>
+<td class="p-2 text-right text-on-surface">2,500.00</td>
+<td class="p-2 text-center text-error hover:text-error-container cursor-pointer"><span class="material-symbols-outlined" style="font-size: 16px;">delete</span></td>
+</tr>
+<tr class="border-b border-outline-variant hover:bg-surface-container-high">
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 focus:bg-surface-dim" type="text" value="Installation Services (Hours)"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-center focus:bg-surface-dim" type="number" value="8"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-right focus:bg-surface-dim" type="text" value="150.00"/></td>
+<td class="p-2"><input class="w-full bg-transparent border-none p-1 text-center focus:bg-surface-dim" type="number" value="20"/></td>
+<td class="p-2 text-right text-on-surface">1,200.00</td>
+<td class="p-2 text-center text-error hover:text-error-container cursor-pointer"><span class="material-symbols-outlined" style="font-size: 16px;">delete</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Totals Section -->
+<div class="flex justify-end pt-4">
+<div class="w-64 space-y-2">
+<div class="flex justify-between text-body-sm text-on-surface-variant">
+<span>Subtotal</span>
+<span>$3,700.00</span>
+</div>
+<div class="flex justify-between text-body-sm text-on-surface-variant items-center">
+<span>Discount (%)</span>
+<input class="w-16 bg-surface-dim border border-outline-variant rounded p-1 text-right" type="number" value="5"/>
+</div>
+<div class="flex justify-between text-body-sm text-on-surface-variant">
+<span>VAT (20%)</span>
+<span>$703.00</span>
+</div>
+<div class="flex justify-between font-title text-title text-on-surface pt-2 border-t border-outline-variant">
+<span>Total Due</span>
+<span>$4,218.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Pane: Print Preview -->
+<section class="w-1/2 h-full flex flex-col bg-slate-800 relative border-l border-outline-variant">
+<!-- Print Toolbar -->
+<div class="p-md border-b border-slate-700 flex justify-between items-center bg-slate-900 sticky top-0 z-10 shadow-md">
+<div class="flex gap-2 items-center">
+<button class="p-1 rounded hover:bg-slate-700 text-slate-300" title="Zoom Out"><span class="material-symbols-outlined" style="font-size: 20px;">zoom_out</span></button>
+<span class="text-body-sm text-slate-400 w-12 text-center">100%</span>
+<button class="p-1 rounded hover:bg-slate-700 text-slate-300" title="Zoom In"><span class="material-symbols-outlined" style="font-size: 20px;">zoom_in</span></button>
+<div class="h-4 w-px bg-slate-600 mx-2"></div>
+<select class="bg-slate-800 border border-slate-600 rounded text-body-sm text-slate-300 px-2 py-1 h-[32px] focus:ring-1 focus:ring-primary">
+<option>Printer: Office-Laser-1</option>
+<option>Printer: Thermal-POS-A</option>
+<option>Save as PDF</option>
+</select>
+</div>
+<div class="flex gap-3">
+<button class="h-[32px] px-3 border border-slate-600 rounded hover:bg-slate-700 text-slate-300 text-body-sm flex items-center gap-1">
+<span class="material-symbols-outlined" style="font-size: 16px;">download</span> Download
+                    </button>
+<button class="h-[32px] px-4 rounded bg-primary text-on-primary font-label-md hover:bg-primary-fixed-dim transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">send</span> Send &amp; Paste in Chat
+                    </button>
+</div>
+</div>
+<!-- Virtual A4 Sheet Container -->
+<div class="flex-1 overflow-auto p-8 flex justify-center bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCI+PGNpcmNsZSBjeD0iMiIgY3k9IjIiIHI9IjEiIGZpbGw9IiMzMzMiLz48L3N2Zz4=')]">
+<!-- The Paper -->
+<div class="print-paper w-full max-w-[800px] p-12 flex flex-col font-sans" style="font-family: Arial, sans-serif;">
+<!-- Invoice Header -->
+<div class="flex justify-between items-start border-b-2 border-gray-800 pb-6 mb-8">
+<div>
+<h1 class="text-3xl font-bold text-gray-900 mb-2">INVOICE</h1>
+<p class="text-sm text-gray-600">INV-2024-8932</p>
+<p class="text-sm text-gray-600">Date: Oct 24, 2024</p>
+</div>
+<div class="text-right">
+<h2 class="text-xl font-bold text-gray-900">Nexus ERP Systems</h2>
+<p class="text-sm text-gray-600">770 Data Center Blvd</p>
+<p class="text-sm text-gray-600">San Jose, CA 95113</p>
+<p class="text-sm text-gray-600">VAT: US-882-1192</p>
+</div>
+</div>
+<!-- Bill To -->
+<div class="mb-8">
+<h3 class="text-sm font-bold text-gray-800 uppercase mb-2">Bill To:</h3>
+<p class="text-base text-gray-900 font-semibold">Acme Corp Logistics</p>
+<p class="text-sm text-gray-700 whitespace-pre-line">124 Industrial Pkwy, Suite 400
+Neo-Seattle, WA 98101</p>
+<p class="text-sm text-gray-700 mt-1">Tax ID: VAT-992-881X</p>
+</div>
+<!-- Items Table -->
+<table class="w-full mb-8 text-sm">
+<thead>
+<tr class="border-b-2 border-gray-800 text-left text-gray-800">
+<th class="py-2 w-1/2">Description</th>
+<th class="py-2 text-center">Qty</th>
+<th class="py-2 text-right">Price</th>
+<th class="py-2 text-right">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-gray-300">
+<td class="py-3 text-gray-800">Enterprise Server Rack (42U)</td>
+<td class="py-3 text-center text-gray-800">2</td>
+<td class="py-3 text-right text-gray-800">$1,250.00</td>
+<td class="py-3 text-right text-gray-800">$2,500.00</td>
+</tr>
+<tr class="border-b border-gray-300">
+<td class="py-3 text-gray-800">Installation Services (Hours)</td>
+<td class="py-3 text-center text-gray-800">8</td>
+<td class="py-3 text-right text-gray-800">$150.00</td>
+<td class="py-3 text-right text-gray-800">$1,200.00</td>
+</tr>
+</tbody>
+</table>
+<!-- Totals -->
+<div class="flex justify-end">
+<div class="w-64">
+<div class="flex justify-between py-1 text-sm text-gray-700">
+<span>Subtotal</span>
+<span>$3,700.00</span>
+</div>
+<div class="flex justify-between py-1 text-sm text-gray-700">
+<span>Discount (5%)</span>
+<span class="text-red-600">-$185.00</span>
+</div>
+<div class="flex justify-between py-1 text-sm text-gray-700">
+<span>VAT (20%)</span>
+<span>$703.00</span>
+</div>
+<div class="flex justify-between py-2 mt-2 border-t-2 border-gray-800 text-lg font-bold text-gray-900">
+<span>Total</span>
+<span>$4,218.00</span>
+</div>
+</div>
+</div>
+<!-- Footer -->
+<div class="mt-auto border-t border-gray-300 pt-4 text-center text-xs text-gray-500">
+<p>Thank you for your business. Payment is due within 30 days.</p>
+<p>Nexus ERP Financial Services | nexus-erp.com/pay</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="fixed bottom-0 right-0 w-[calc(100%-64px)] h-6 bg-surface-container-low dark:bg-surface-container-low border-t border-outline-variant flex justify-between items-center px-md ml-[64px] z-40 cursor-default">
+<div class="font-mono text-mono text-on-surface-variant">
+            System Status: Operational | AI Latency: 24ms | Queue: 0
+        </div>
+<div class="flex gap-4 font-label-xs text-label-xs">
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Logs</a>
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Support</a>
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Privacy</a>
+</div>
+</footer>
+</body></html>

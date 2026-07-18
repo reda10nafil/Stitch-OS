@@ -1,0 +1,6 @@
+.claude-flow/
+.swarm/
+*.csv
+*.db
+*.ps1
+opencode.json

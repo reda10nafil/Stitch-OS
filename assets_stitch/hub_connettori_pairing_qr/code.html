@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nexus ERP - Connector Hub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-fixed": "#0b1c30",
+                    "inverse-surface": "#dfe3e8",
+                    "on-secondary": "#213145",
+                    "secondary-fixed-dim": "#b7c8e1",
+                    "surface-bright": "#353a3e",
+                    "surface-container": "#1c2024",
+                    "on-secondary-container": "#a9bad3",
+                    "on-primary-fixed-variant": "#004b73",
+                    "background": "#101418",
+                    "surface-dim": "#101418",
+                    "error": "#ffb4ab",
+                    "secondary-fixed": "#d3e4fe",
+                    "on-primary-fixed": "#001d31",
+                    "error-container": "#93000a",
+                    "surface-variant": "#31353a",
+                    "on-error-container": "#ffdad6",
+                    "on-surface": "#dfe3e8",
+                    "on-surface-variant": "#bfc7d2",
+                    "surface-container-lowest": "#0a0f13",
+                    "inverse-on-surface": "#2d3135",
+                    "surface-tint": "#93ccff",
+                    "primary-container": "#3198dc",
+                    "outline-variant": "#3f4850",
+                    "surface": "#101418",
+                    "on-tertiary": "#4b2800",
+                    "on-tertiary-fixed": "#2d1600",
+                    "inverse-primary": "#006398",
+                    "tertiary": "#ffb875",
+                    "secondary": "#b7c8e1",
+                    "primary-fixed-dim": "#93ccff",
+                    "surface-container-low": "#181c20",
+                    "tertiary-fixed": "#ffdcc0",
+                    "tertiary-container": "#d07d1c",
+                    "on-background": "#dfe3e8",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "tertiary-fixed-dim": "#ffb875",
+                    "secondary-container": "#3a4a5f",
+                    "on-primary": "#003351",
+                    "on-error": "#690005",
+                    "primary": "#93ccff",
+                    "on-tertiary-container": "#412200",
+                    "surface-container-highest": "#31353a",
+                    "primary-fixed": "#cce5ff",
+                    "outline": "#89929b",
+                    "on-primary-container": "#002c47",
+                    "on-secondary-fixed-variant": "#38485d",
+                    "surface-container-high": "#262a2f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "shell-sidebar": "240px",
+                    "base-unit": "4px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "shell-header": "56px",
+                    "xl": "32px",
+                    "lg": "24px",
+                    "sm": "8px"
+            },
+            "fontFamily": {
+                    "headline": ["Inter"],
+                    "mono": ["ui-monospace"],
+                    "body-sm": ["Inter"],
+                    "title": ["Inter"],
+                    "display": ["Inter"],
+                    "body-base": ["Inter"],
+                    "label-md": ["Inter"],
+                    "label-xs": ["Inter"]
+            },
+            "fontSize": {
+                    "headline": ["18px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "mono": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "body-sm": ["12px", {"lineHeight": "16px", "fontWeight": "400"}],
+                    "title": ["14px", {"lineHeight": "20px", "fontWeight": "600"}],
+                    "display": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-base": ["13.3px", {"lineHeight": "18px", "fontWeight": "400"}],
+                    "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "label-xs": ["11px", {"lineHeight": "14px", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body { margin: 0; padding: 0; overflow: hidden; }
+        .progress-ring__circle {
+            transition: stroke-dashoffset 1s linear;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-surface-container-lowest dark:bg-surface-container-lowest fixed left-0 top-0 h-full w-[64px] border-r border-outline-variant flex flex-col items-center py-4 space-y-4 z-20 md:w-shell-sidebar md:items-stretch md:px-4">
+<div class="mb-8 flex items-center justify-center md:justify-start w-full">
+<div class="w-8 h-8 rounded bg-primary-container text-on-primary-container flex items-center justify-center font-bold">N</div>
+<div class="hidden md:block ml-3">
+<div class="font-headline text-headline text-primary dark:text-primary">Nexus ERP</div>
+<div class="font-label-xs text-label-xs text-on-surface-variant">Enterprise Core</div>
+</div>
+</div>
+<div class="flex-1 w-full space-y-2">
+<!-- Dashboard -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center">dashboard</span>
+<span class="hidden md:block ml-3">Dashboard</span>
+</a>
+<!-- Calendar -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center">calendar_today</span>
+<span class="hidden md:block ml-3">Calendar</span>
+</a>
+<!-- Inventory -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center">inventory_2</span>
+<span class="hidden md:block ml-3">Inventory</span>
+</a>
+<!-- CRM -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center">groups</span>
+<span class="hidden md:block ml-3">CRM</span>
+</a>
+<!-- Connectors (ACTIVE) -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-primary border-l-2 border-primary bg-secondary-container/20 font-label-md text-label-md scale-95 transition-transform" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center" style="font-variation-settings: 'FILL' 1;">hub</span>
+<span class="hidden md:block ml-3">Connectors</span>
+</a>
+<!-- Billing -->
+<a class="group flex items-center justify-center md:justify-start w-full p-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-colors font-label-md text-label-md" href="#">
+<span class="material-symbols-outlined w-6 h-6 flex items-center justify-center">payments</span>
+<span class="hidden md:block ml-3">Billing</span>
+</a>
+</div>
+<div class="mt-auto w-full pt-4 border-t border-outline-variant flex items-center justify-center md:justify-start">
+<img alt="Administrator" class="w-8 h-8 rounded-full" data-alt="A professional headshot of a male administrator in a modern enterprise setting, dark mode lighting, subtle blue hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCorcTm87MphkEohtzZg2LC3ZdJnXwDQvYrlmDqbmBVl88TOoDE5OSgaUndoFolSay3jGBlhPJkSbhjx8RSI62D3lKIedUrSQqqixmslS5Vcu9nkcOqCCfoeg8sGrCKl8K6rosDk1pLrFNSDVcor30aJtIdpC8pV3as7cNtqB90teo3uFAi-Z1RYlNZWjciAb85niFoC5H0l9gWBLxOQKdsVeD4aHL7c2kuW7hW1gU2ICBnN6637nZ6L5t2CJPN0DKkW87elYM-hC_l"/>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="bg-surface dark:bg-surface fixed top-0 right-0 w-[calc(100%-64px)] md:w-[calc(100%-240px)] h-shell-header border-b border-outline-variant flex justify-between items-center px-md z-10">
+<div class="flex items-center w-full max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="w-full bg-surface-container border border-outline-variant rounded pl-9 pr-4 py-1.5 text-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary text-on-surface placeholder:text-on-surface-variant font-body-sm" placeholder="Search Connectors..." type="text"/>
+</div>
+</div>
+<div class="flex items-center space-x-4">
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-all duration-200">
+<span class="material-symbols-outlined">help</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="ml-[64px] md:ml-[240px] mt-shell-header w-full h-[calc(100vh-56px-24px)] overflow-y-auto p-lg">
+<div class="max-w-5xl mx-auto">
+<div class="mb-6">
+<h1 class="font-display text-display text-on-surface">Connector Hub</h1>
+<p class="font-body-base text-body-base text-on-surface-variant mt-1">Manage active integrations and communication channels.</p>
+</div>
+<!-- Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6"><div class="bg-surface-container-low rounded-lg border-2 border-dashed border-outline-variant p-6 flex flex-col items-center justify-center text-center group hover:border-primary hover:bg-surface-container transition-all cursor-pointer h-full min-h-[250px]">
+<div class="w-12 h-12 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface-variant group-hover:text-primary group-hover:border-primary transition-colors mb-4">
+<span class="material-symbols-outlined text-2xl">add</span>
+</div>
+<h3 class="font-title text-title text-on-surface">Add New Connector</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 max-w-[200px]">Integrate custom MCP servers or third-party communication APIs.</p>
+<button class="mt-6 px-6 py-2 bg-primary/10 text-primary border border-primary/20 rounded font-label-md text-label-md hover:bg-primary hover:text-on-primary transition-colors">
+    Configure MCP
+  </button>
+</div>
+<!-- Telegram Card -->
+<div class="bg-surface-container rounded-lg border border-outline-variant p-6 flex flex-col relative overflow-hidden">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-[#2AABEE]">
+<span class="material-symbols-outlined">send</span>
+</div>
+<div>
+<h3 class="font-title text-title text-on-surface">Telegram Bot API</h3>
+<div class="flex items-center space-x-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-error"></span>
+<span class="font-label-xs text-label-xs text-error">Disconnected</span>
+</div>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Connect your Telegram bot to handle inbound queries and send automated notifications directly from Nexus ERP.</p>
+<div class="mt-auto space-y-4">
+<div class="space-y-1">
+<label class="font-label-xs text-label-xs text-on-surface-variant">Bot Token</label>
+<div class="flex space-x-2">
+<input class="flex-1 bg-surface-dim border border-outline-variant rounded px-3 py-1.5 font-mono text-mono text-on-surface focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary" readonly="" type="password" value="123456789:ABCDEFGHIJKLMNOPQRSTUVWXYZ"/>
+<button class="px-3 py-1.5 rounded bg-surface-container-high border border-outline-variant text-on-surface-variant hover:text-on-surface hover:border-outline transition-colors">
+<span class="material-symbols-outlined text-sm">visibility</span>
+</button>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary font-label-md text-label-md rounded py-2 hover:bg-primary-fixed transition-colors">
+                            Verify &amp; Connect
+                        </button>
+</div>
+</div>
+<!-- WhatsApp Card -->
+<div class="bg-surface-container rounded-lg border border-primary p-6 flex flex-col relative overflow-hidden shadow-[0_0_15px_rgba(49,152,220,0.1)]">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-bl-full -z-0"></div>
+<div class="flex justify-between items-start mb-4 relative z-10">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded bg-[#25D366]/10 border border-[#25D366]/20 flex items-center justify-center text-[#25D366]">
+<span class="material-symbols-outlined">chat</span>
+</div>
+<div>
+<h3 class="font-title text-title text-on-surface">WhatsApp Business</h3>
+<div class="flex items-center space-x-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+<span class="font-label-xs text-label-xs text-tertiary">Pairing Required</span>
+</div>
+</div>
+</div>
+<!-- Toggle Switch -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-9 h-5 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-on-surface after:border-on-surface after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6 relative z-10">Link your WhatsApp Business account via Web QR to enable conversational CRM features and AI-assisted responses.</p>
+<div class="mt-auto relative z-10">
+<button class="w-full bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md rounded py-2 hover:bg-surface-container-highest transition-colors flex items-center justify-center" onclick="document.getElementById('qr-modal').classList.remove('hidden'); document.getElementById('qr-modal').classList.add('flex');">
+<span class="material-symbols-outlined mr-2 text-sm">qr_code_scanner</span>
+                            Open Pairing Modal
+                        </button>
+</div>
+</div>
+<!-- Webhook Card (Extra Component to fill grid) -->
+<div class="bg-surface-container rounded-lg border border-outline-variant p-6 flex flex-col relative overflow-hidden opacity-75">
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded bg-surface-container-high border border-outline-variant flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined">webhook</span>
+</div>
+<div>
+<h3 class="font-title text-title text-on-surface">Custom Webhooks</h3>
+<div class="flex items-center space-x-2 mt-1">
+<span class="w-2 h-2 rounded-full bg-outline"></span>
+<span class="font-label-xs text-label-xs text-on-surface-variant">Inactive</span>
+</div>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-6">Configure custom HTTP endpoints for event-driven integrations with internal services.</p>
+<div class="mt-auto">
+<button class="w-full bg-transparent border border-outline-variant text-on-surface-variant font-label-md text-label-md rounded py-2 hover:bg-surface-container-high transition-colors">
+                            Configure
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-low dark:bg-surface-container-low fixed bottom-0 right-0 w-[calc(100%-64px)] md:w-[calc(100%-240px)] h-6 border-t border-outline-variant flex justify-between items-center px-md z-10 cursor-default">
+<div class="font-mono text-mono text-on-surface-variant">
+            System Status: Operational | AI Latency: 24ms | Queue: 0
+        </div>
+<div class="flex space-x-4 font-label-xs text-label-xs">
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Logs</a>
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Support</a>
+<a class="text-on-surface-variant hover:text-on-surface" href="#">Privacy</a>
+</div>
+</footer>
+<!-- WhatsApp QR Modal Overlay -->
+<div class="hidden fixed inset-0 z-50 bg-background/80 backdrop-blur-sm items-center justify-center p-4" id="qr-modal">
+<div class="bg-surface border border-outline-variant rounded-xl shadow-2xl w-full max-w-2xl flex flex-col overflow-hidden relative">
+<!-- Modal Header -->
+<div class="px-6 py-4 border-b border-outline-variant flex justify-between items-center bg-surface-container-low">
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-[#25D366]">chat</span>
+<h2 class="font-title text-title">WhatsApp Device Pairing</h2>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors" onclick="document.getElementById('qr-modal').classList.add('hidden'); document.getElementById('qr-modal').classList.remove('flex');">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-8 flex flex-col md:flex-row items-center justify-between gap-8 bg-surface-container-lowest">
+<!-- Instructions -->
+<div class="flex-1 space-y-6">
+<h3 class="font-display text-lg font-semibold text-on-surface mb-2">To use WhatsApp on Nexus ERP:</h3>
+<ol class="space-y-4">
+<li class="flex items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono text-xs text-on-surface mr-3 mt-0.5">1</span>
+<span class="font-body-base text-body-base text-on-surface-variant">Open WhatsApp on your mobile device.</span>
+</li>
+<li class="flex items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono text-xs text-on-surface mr-3 mt-0.5">2</span>
+<span class="font-body-base text-body-base text-on-surface-variant">Tap Menu (<span class="material-symbols-outlined text-xs align-middle">more_vert</span>) or Settings (<span class="material-symbols-outlined text-xs align-middle">settings</span>) and select <strong>Linked Devices</strong>.</span>
+</li>
+<li class="flex items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono text-xs text-on-surface mr-3 mt-0.5">3</span>
+<span class="font-body-base text-body-base text-on-surface-variant">Tap on <strong>Link a Device</strong>.</span>
+</li>
+<li class="flex items-start">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container-high border border-outline-variant flex items-center justify-center font-mono text-xs text-on-surface mr-3 mt-0.5">4</span>
+<span class="font-body-base text-body-base text-on-surface-variant">Point your phone to this screen to capture the code.</span>
+</li>
+</ol>
+</div>
+<!-- QR Area -->
+<div class="relative flex flex-col items-center">
+<div class="p-2 bg-white rounded-lg border-4 border-surface-container-highest relative">
+<!-- Mock QR Code Image -->
+<img alt="QR Code" class="w-[250px] h-[250px] object-cover grayscale contrast-200" data-alt="A highly detailed black and white QR code pattern isolated on a white background. The image should be crisp, square, and look like a functional scanning code for a digital interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA41lDV7HcSZ6Dv9Q04aLBRJhwHnIzADdABQ22YMPrz3BPZOr4_QAaZQE8Pf_iw8Z_OnvqQPYKdm2IKa2LDUs5CaqVF9M1rokre2x4KmCbJbhEtaLHLB3tsOdPAB9dBeVBaDui4v9V-EKqVEgdrp7n2WWnqq5FCCLHx8Q9NitKqlhxBr5UK8b0MJd56blqzhBTxtvVb8mi39xfkm1LIFzddYNIKKueifYFJiQgpk34tUNuMO87S6IVfd1tVY2IkkAbgxpYv-5y3Or1m"/>
+<!-- Progress Overlay -->
+<div class="absolute inset-0 bg-black/10 flex items-center justify-center rounded pointer-events-none">
+<div class="w-16 h-16 bg-surface border border-outline-variant rounded-full flex items-center justify-center text-[#25D366] shadow-lg">
+<span class="material-symbols-outlined">chat</span>
+</div>
+</div>
+</div>
+<!-- Timer -->
+<div class="mt-6 flex items-center space-x-3">
+<div class="relative w-8 h-8">
+<svg class="w-full h-full" viewbox="0 0 36 36">
+<path class="text-surface-container-highest" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="3"></path>
+<path class="text-primary progress-ring__circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-dashoffset="25" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-mono text-[10px] text-on-surface">45s</div>
+</div>
+<span class="font-label-sm text-label-xs text-on-surface-variant">Code expires soon</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>
